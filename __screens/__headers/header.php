@@ -45,8 +45,7 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true;
     <link rel="icon" type="image/x-icon" href="static/assets/favicon.ico" />
 
     <!-- Bootstrap icons-->
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <!-- Google fonts-->
     <link rel="preconnect" href="https://fonts.gstatic.com" />
@@ -99,6 +98,30 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true;
             margin-top: -10px;
             /* Pulls the second navbar up closer to the first */
         }
+        #popup-buttons {
+            padding: 0.5em;
+            position: absolute;
+            top: 80%;
+            right: 2%;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            border-radius: 4px;
+            z-index: 100;
+        }
+        .account-nav-link{
+            position: relative;
+            color: #000;
+            font-size: large;
+        }
+        .account-nav-link:hover + #popup-buttons {
+            display: block;
+        }
+        .account-nav-link .bi{
+            color: inherit;
+        }
+        .account-nav-link:hover{
+            color: #ff00ff;
+        }
     </style>
 </head>
 <body id="page-top">
@@ -121,9 +144,9 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true;
                                     </div>
                                 </a> -->
                                 <div class="menu-toggle1" onclick="toggleMenu()">
-                                    <div class="dash"></div>
-                                    <div class="dash"></div>
-                                    <div class="dash"></div>
+                                    <div class="dash" style="background: #ff00ff;"></div>
+                                    <div class="dash" style="background: #ff00ff;"></div>
+                                    <div class="dash" style="background: #ff00ff;"></div>
                                 </div>
                                 <ul class="dropdown-content dropdown-menu" id="dropdownContent" aria-labelledby="navbarDropdownMenuLink">
                                     <img src="../../static/images/WhatsApp_Image_2024-02-28_at_15.48.15-removebg-preview.png" alt="Wakazi" id="dropdown-logo">
@@ -158,7 +181,7 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true;
                     </form>
                 </div>
                 <!-- Icons for cart, account, and help -->
-                <div class="d-flex accounts-nav">
+                <div class="d-flex accounts-nav" style="margin-right: 20px;">
                     <?php if ($isLoggedIn) : ?>
                         <a href="#" class="nav-link">
                             <i class="bi bi-cart4" style="padding: 2px;"></i> Cart
@@ -172,15 +195,36 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true;
                         </a>
                     <?php else : ?>
                         <!-- Links to show when the user is not logged in -->
-                        <a href="../../__auth/__accounts/login.php" class="nav-link" id="popup-trigger">
+                        <a href="../../__auth/__accounts/login.php" class="nav-link account-nav-link" id="popup-trigger">
                             <i class="bi bi-person-check"></i> Account
                         </a>
-                        <ul id="popup-buttons" style="display: none;">
-                            <li type="button" class="btn btn-primary"><a href="../../__auth/__accounts/signup.php" style="text-decoration: none; color: white;">Sign Up</a></li>
-                            <li type="button" class="btn btn-secondary"><a href="../../__auth/__accounts/login.php" style="text-decoration: none; color: white;">Sign In</a></li>
+                        <ul id="popup-buttons" style="display: none; list-style: none;">
+                            <li type="button" class="btn" style="background: #ff00ff; width: 100%; margin-bottom: 5px;"><a href="../../__auth/__accounts/signup.php" style="text-decoration: none; color: white; padding: 5px;">Sign Up</a></li>
+                            <li type="button" class="btn" style="background: #ff00ff; width: 100%;"><a href="../../__auth/__accounts/login.php" style="text-decoration: none; color: white; padding: 5px;">Sign In</a></li>
+                            <hr />
+                            <li style="text-align: left; margin-bottom: 7px;"><a href="#" style="text-decoration: none; color: #000;"><i class="bi bi-person-check" style="color: #000;"></i> My Account</a></li>
+                            <li style="text-align: left; margin-bottom: 7px;"><a href="#" style="text-decoration: none; color: #000;"><i class="bi bi-box2-heart" style="color: #000; font-size: 20px;"></i></i> Orders</a></li>
+                            <li style="text-align: left; margin-bottom: 7px;"><a href="#" style="text-decoration: none; color: #000;"><i class="bi bi-chat-left-heart" style="color: #000; font-size: 20px;"></i></i> Saved items</a></li>
                         </ul>
+                        <script>
+                            // Get the account link and the popup buttons
+                            const accountLink = document.getElementById('popup-trigger');
+                            const popupButtons = document.getElementById('popup-buttons');
+
+                            // Add click event listener to the account link
+                            accountLink.addEventListener('click', function(event) {
+                                // Prevent the default behavior of the link
+                                event.preventDefault();
+                                // Toggle the visibility of the popup buttons
+                                if (popupButtons.style.display === 'none') {
+                                    popupButtons.style.display = 'block';
+                                } else {
+                                    popupButtons.style.display = 'none';
+                                }
+                            });
+                        </script>
                         <br>
-                        <a href="#" class="nav-link">
+                        <a href="#" class="nav-link account-nav-link">
                             <i class="bi bi-patch-question-fill" style="font-size: 20px;"></i> Help
                         </a>
                     <?php endif; ?>
@@ -243,23 +287,6 @@ $isLoggedIn = isset($_SESSION['logged_in']) && $_SESSION['logged_in'] === true;
             let dropDownContent = document.getElementById("dropdownContent");
             dropdownContent.style.display = dropdownContent.style.display === "block" ? "none": "block";
         }
-
-
-        // Get the account link and the popup buttons
-        const accountLink = document.getElementById('popup-trigger');
-        const popupButtons = document.getElementById('popup-buttons');
-
-        // Add click event listener to the account link
-        accountLink.addEventListener('click', function(event) {
-            // Prevent the default behavior of the link
-            event.preventDefault();
-            // Toggle the visibility of the popup buttons
-            if (popupButtons.style.display === 'none') {
-                popupButtons.style.display = 'block';
-            } else {
-                popupButtons.style.display = 'none';
-            }
-        });
 
         // Add click event listener to the document to handle clicks outside of the buttons
         document.addEventListener('click', function(event) {

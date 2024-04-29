@@ -16,7 +16,7 @@ include("__screens/__headers/header.php")
             <div class="carousel-caption">
                 <h1 class="heading-h1">Artisans are the Alchemists.</h1>
                 <p>Artisans are the alchemists of our time, turning ordinary materials into works of wonder.</p>
-                <button style="font-size: 1.2em;"><a href="#collection">Discover more</a></button>
+                <button style="font-size: 1.2em; background: #ff00ff;"><a href="#collection">Discover more</a></button>
             </div>
         </div>
         <div class="carousel-item" data-bs-interval="5000">
@@ -24,7 +24,7 @@ include("__screens/__headers/header.php")
             <div class="carousel-caption">
                 <h1 class="heading-h1">The true Artisan.</h1>
                 <p>The true artisan is a seeker of beauty and truth, a philosopher of the tangible.</p>
-                <button style="font-size: 1.2em;"><a href="#collection">Discover more</a></button>
+                <button style="font-size: 1.2em; background: #ff00ff;"><a href="#collection">Discover more</a></button>
             </div>
         </div>
         <div class="carousel-item" data-bs-interval="5000">
@@ -32,17 +32,17 @@ include("__screens/__headers/header.php")
             <div class="carousel-caption">
                 <h1 class="heading-h1">The silent Philosophers.</h1>
                 <p>Artisans are the silent philosophers of society, shaping the world with their hands and minds. </p>
-                <button style="font-size: 1.2em;"><a href="#collection">Discover more</a></button>
+                <button style="font-size: 1.2em; background: #ff00ff;"><a href="#collection">Discover more</a></button>
             </div>
         </div>
         
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="carousel-control-prev-icon" aria-hidden="true" style="color: #ff00ff;"></span>
         <span class="visually-hidden">Previous</span>
     </button>
     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="carousel-control-next-icon" aria-hidden="true" style="color: #ff00ff;"></span>
         <span class="visually-hidden">Next</span>
     </button>
 </div>
@@ -51,7 +51,7 @@ include("__screens/__headers/header.php")
 
 <!-- Collections -->
 <div class="collection-container justify-content-center" id="collection">
-    <h1>Shop by collections</h1>
+    <h1 style="color: #ff00ff;">Shop by collections</h1>
     <hr />
     <div class="row">
         <div class="collection-col col-12 col-md mx-3">
@@ -161,7 +161,7 @@ include("__screens/__headers/header.php")
                             <div class="text-center">
                                 <i class="bi-phone icon-feature text-gradient d-block mb-3"></i>
                                 <h3 class="font-alt">Product Sales</h3>
-                                <p class="text-muted mb-0">Extremem product fucntionalities </p>
+                                <p class="text-muted mb-0">Extreme product fucntionalities </p>
                             </div>
                         </div>
                         <div class="col-md-6 mb-5">
@@ -242,10 +242,15 @@ include("__screens/__headers/header.php")
         <div class="row gx-5 align-items-center justify-content-center justify-content-lg-between">
             <div class="col-12 col-lg-5">
                 <h2 class="display-4 lh-1 mb-4">Renaissance fuses Avant-Garde </h2>
-                <p class="lead fw-normal text-muted mb-5 mb-lg-0">
-                    In the vibrant tapestry of artistic expression, where the Renaissance meets the avant-garde, lies a fusion of tradition and innovation that ignites the senses. 
-                    <a href="#">contiue reading.</a>
+                <p class="lead fw-normal text-muted mb-5 mb-lg-0">In the vibrant tapestry of artistic expression, where the Renaissance meets the avant-garde, lies a fusion of tradition and innovation that ignites the senses. </p>
+                <p class="lead fw-normal text-muted mb-5 mb-lg-0" id="paragraph">
+                    
+
+                    Picture the sun-drenched landscapes of sub-Saharan Africa, where rhythms pulse through the earth and colors dance upon the canvas of existence. Here, amidst the ancient rhythms of tribal drums and the intricate beadwork of cultural heritage, emerges a new Renaissance—a rebirth of creativity that transcends boundaries. 
+
+                    In this eclectic convergence, traditional motifs intertwine with modern techniques, birthing a kaleidoscope of expression that challenges the norms of convention. This is where the echoes of history harmonize with the avant-garde spirit, where every brushstroke whispers tales of resilience and every melody carries the heartbeat of a continent.
                 </p>
+                <a class="btn btn-primary mt-3" data-bs-toggle="collapse" href="#collapseExample" aria-expanded="false" aria-controls="collapseExample" id="readMoreBtn" style="background: #ff00ff; border: none; outline: none;">Read More</a>
             </div>
             <div class="col-sm-8 col-md-6">
                 <div class="px-5 px-sm-0"><img class="img-fluid rounded-circle" src="https://source.unsplash.com/u8Jn2rzYIps/900x900" alt="..." /></div>
@@ -253,6 +258,24 @@ include("__screens/__headers/header.php")
         </div>
     </div>
 </section>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Hide the paragraph initially
+        document.getElementById('paragraph').classList.add('collapse');
+
+        // Toggle collapse state when Read More button is clicked
+        document.getElementById('readMoreBtn').addEventListener('click', function() {
+            const paragraph = document.getElementById('paragraph');
+            if (paragraph.classList.contains('show')) {
+                paragraph.classList.remove('show');
+                document.getElementById('readMoreBtn').innerText = 'Read More';
+            } else {
+                paragraph.classList.add('show');
+                document.getElementById('readMoreBtn').innerText = 'Read Less';
+            }
+        });
+    });
+</script>
 <!-- Call to action section-->
 <!-- <section class="cta">
         <div class="cta-content">
@@ -278,9 +301,6 @@ include("__screens/__headers/header.php")
 </section>
 
 <section class="footer-top" id="footer-1" style="background-color: #e868f0;">
-
-<section class="footer" id="footer-1" style="background-color: #C03FE7DF;">
-
     <div class="container text-center">
         <div class="row align-items-center flex-column flex-sm-row">
             <div class="col footer-col">
@@ -305,9 +325,7 @@ include("__screens/__headers/header.php")
             </div>
         </div>
     </div>
-
-
-
+</section>
 <!-- Footer-->
     <section class="footer" style="background-color: #c837d1;">
         <div class="container-fluid">
@@ -363,138 +381,7 @@ include("__screens/__headers/header.php")
                     <a href="https://ke.linkedin.com/company/wakazi-works-platform" target="blank"><i class="bi bi-linkedin text-light"></i></a>
                     <a href="https://twitter.com/wakaziworks" target="blank"><i class="bi bi-twitter text-light"></i></i></a>
                     <a href="https://www.instagram.com/wakazi_works/" target="blank"><i class="bi bi-instagram text-light"></i></a>
-
-    <!-- Remove the container if you want to extend the Footer to full width. -->
-    <div class="my-5">
-
-        <!-- Footer -->
-        <footer class="text-center text-lg-start text-white" style="background-color: #431B63">
-            <!-- Section: Social media -->
-            <section class="d-flex justify-content-between p-4" style="background-color: #433595">
-                <!-- Left -->
-                <div class="me-5">
-                    <span>Get connected with us on social networks:</span>
                 </div>
-                <!-- Left -->
-
-                <!-- Right -->
-                <div>
-                    <a href="" class="text-white me-4">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="" class="text-white me-4">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                    <a href="" class="text-white me-4">
-                        <i class="fab fa-google"></i>
-                    </a>
-                    <a href="" class="text-white me-4">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="" class="text-white me-4">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="" class="text-white me-4">
-                        <i class="fab fa-github"></i>
-                    </a>
-                </div>
-                <!-- Right -->
-            </section>
-            <!-- Section: Social media -->
-
-            <!-- Section: Links  -->
-            <section class="">
-                <div class="container text-center text-md-start mt-5">
-                    <!-- Grid row -->
-                    <div class="row mt-3">
-                        <!-- Grid column -->
-                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                            <!-- Content -->
-                            <h6 class="text-uppercase fw-bold">Business
-                            </h6>
-                            <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
-                            <p>
-                                <a href="#!" class="text-white">Want to be a seller</a>
-                            </p>
-                            <p>
-                                <a href="#!" class="text-white">Wakazi Shop</a>
-                            </p>
-                            <p>
-                                <a href="#!" class="text-white">Terms and Conditions</a>
-                            </p>
-                            <p>
-                                <a href="#!" class="text-white">FAQ Center
-                                </a>
-                            </p>
-                        </div>
-                        <!-- Grid column -->
-
-                        <!-- Grid column -->
-                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                            <!-- Links -->
-                            <h6 class="text-uppercase fw-bold">Products</h6>
-                            <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
-                            <p>
-                                <a href="#!" class="text-white">Seller Center</a>
-                            </p>
-                            <p>
-                                <a href="#!" class="text-white">Privacy Policy</a>
-                            </p>
-                            <p>
-                                <a href="#!" class="text-white">Terms and Conditions</a>
-                            </p>
-                            <p>
-                                <a href="#!" class="text-white">FAQ Center
-                                </a>
-                            </p>
-                        </div>
-                        <!-- Grid column -->
-
-                        <!-- Grid column -->
-                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
-                            <!-- Links -->
-                            <h6 class="text-uppercase fw-bold">Useful links</h6>
-                            <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
-                            <p>
-                                <a href="#!" class="text-white">Your Account</a>
-                            </p>
-                            <p>
-                                <a href="#!" class="text-white">Become an Affiliate</a>
-                            </p>
-                            <p>
-                                <a href="#!" class="text-white">Shipping Rates</a>
-                            </p>
-                            <p>
-                                <a href="#!" class="text-white">Help</a>
-                            </p>
-                        </div>
-                        <!-- Grid column -->
-
-                        <!-- Grid column -->
-                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                            <!-- Links -->
-                            <h6 class="text-uppercase fw-bold">Contact</h6>
-                            <hr class="mb-4 mt-0 d-inline-block mx-auto" style="width: 60px; background-color: #7c4dff; height: 2px" />
-                            <p><i class="fas fa-home mr-3"></i> Nairobi, Kenya</p>
-                            <p><i class="fas fa-envelope mr-3"></i> hexanetsystems@gmail.com</p>
-                            <p><i class="fas fa-print mr-3"></i> +254 705 02 7335</p>
-                            <p><i class="fas fa-print mr-3"></i> +254 705 02 7335</p>
-                        </div>
-                        <!-- Grid column -->
-                    </div>
-                    <!-- Grid row -->
-
-                </div>
-            </section>
-            <!-- Section: Links  -->
-
-            <!-- Copyright -->
-            <div class="text-center p-3" style="background-color: #C435E8">
-                © 2024 Copyright:
-                <a class="text-white" href="https://wakazi.co.ke/">Wakazi Works</a>
-            </div>
-
-        </div>
     </section>
     <div class="bottom-footer" style="background: #7d1a86">
         <div>
